@@ -8,3 +8,11 @@ export const COLOR_LIST = {
 
   BLACK: 'rgb(0, 0, 0)',
 } as const;
+
+export type ColorList = {
+  BRAND: string;
+  WHITE: string;
+  GRAY: string;
+  LIGHT_GRAY: string;
+  BLACK: string;
+};
