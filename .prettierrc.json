@@ -3,6 +3,18 @@
   "singleQuote": true,
   "trailingComma": "all",
   "endOfLine": "lf",
-  "importOrder": [],
+  "importOrder": [
+    "^(react)",
+    "^((?!/).)*$",
+    "^(@tanstack/*)(.*|$)*$",
+    "^((.*)/types)(.*|$)",
+    "^((hooks))(.*|$)",
+    "^(pages)(.*|$)",
+    "^(./components|components)*$",
+    "^(./components)(.*|$)",
+    "^(./styles)(.*|$)",
+    "^(.)(.*|$)",
+    "^(..)(.*|$)"
+  ],
   "importOrderSeparation": true
 }
