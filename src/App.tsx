@@ -1,14 +1,25 @@
 import { RouterProvider } from 'react-router-dom';
 
 import router from 'routes';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { css, ThemeProvider } from 'styled-components';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import GlobalStyle from 'styles/GlobalStyle';
 import { theme } from 'styles/theme';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+      retry: 0,
+      refetchOnWindowFocus: false,
+    },
+    mutations: {
+      retry: 0,
+    },
+  },
+});
 
 const App = () => {
   return (
@@ -30,7 +41,11 @@ const S = {
     width: 26.25rem;
     height: 100vh;
     margin: auto;
-    border: 1px solid black;
+    padding: 1.875rem 1.25rem;
+    ${({ theme }) => css`
+      border: 0.0625rem solid ${theme.color.LIGHT_GRAY};
+      box-shadow: 0.0625rem 0.0625rem 0.3125rem ${theme.color.GRAY};
+    `};
   `,
 };
 
