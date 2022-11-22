@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import wrongAnswerNoteReducer from 'redux/quiz/quizSlice';
+import wrongAnswerNoteReducer from 'redux/quiz/wrongAnswerSlice';
 
 export const store = configureStore({
   reducer: {
