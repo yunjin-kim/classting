@@ -41,7 +41,11 @@ const Quiz = () => {
           {type === 'multiple' && (
             <>
               {allAnswers.map((incorrectAnswer) => (
-                <Button key={incorrectAnswer} onClick={handleClickQuizAnswer}>
+                <Button
+                  key={incorrectAnswer}
+                  value={quizzes[quizCount]}
+                  onClick={handleClickQuizAnswer}
+                >
                   {incorrectAnswer}
                 </Button>
               ))}
@@ -49,8 +53,12 @@ const Quiz = () => {
           )}
           {type === 'boolean' && (
             <>
-              <Button onClick={handleClickQuizAnswer}>{'True'}</Button>
-              <Button onClick={handleClickQuizAnswer}>{'False'}</Button>
+              <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
+                {'True'}
+              </Button>
+              <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
+                {'False'}
+              </Button>
             </>
           )}
         </S.AnswerBox>
