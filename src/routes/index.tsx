@@ -3,6 +3,9 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import Home from 'pages/Home';
 import Quiz from 'pages/Quiz';
+import QuizResult from 'pages/QuizResult';
+
+import Title from 'components/Title';
 
 const router = createBrowserRouter([
   {
@@ -12,10 +15,14 @@ const router = createBrowserRouter([
   {
     path: '/quiz',
     element: (
-      <Suspense fallback={<p>로딩중</p>}>
+      <Suspense fallback={<Title>문제 내는 중</Title>}>
         <Quiz />
       </Suspense>
     ),
+  },
+  {
+    path: '/quiz-result',
+    element: <QuizResult />,
   },
 ]);
 
