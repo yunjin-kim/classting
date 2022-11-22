@@ -5,13 +5,19 @@ import styled from 'styled-components';
 import Button from 'components/Button';
 import Title from 'components/Title';
 
-const QuizEnd = () => {
+interface Props {
+  title: string;
+  path: string;
+  buttonText: string;
+}
+
+const Exception = ({ title, path, buttonText }: Props) => {
   return (
     <S.Container>
-      <Title>퀴즈 끝!</Title>
-      <Link to="/quiz-result">
+      <Title>{title}</Title>
+      <Link to={path}>
         <Button backColor={'GREEN'} hoverBackColor={'LIGHT_GREEN'} fontColor={'WHITE'}>
-          퀴즈 결과보기
+          {buttonText}
         </Button>
       </Link>
     </S.Container>
@@ -27,4 +33,4 @@ const S = {
   `,
 };
 
-export default QuizEnd;
+export default Exception;

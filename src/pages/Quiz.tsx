@@ -4,20 +4,20 @@ import { shuffle } from 'utils';
 import useQuiz from 'hooks/useQuiz';
 
 import Button from 'components/Button';
+import Exception from 'components/Exception';
 import MarginBox from 'components/MarginBox';
 import ProgressBar from 'components/ProgressBar';
-import QuizEnd from 'components/QuizEnd';
 import Title from 'components/Title';
 
 const Quiz = () => {
   const { quizzes, quizCount, handleClickQuizAnswer } = useQuiz();
 
   if (!quizzes) {
-    return <p>문제 내는 중</p>;
+    return <Title>문제 내는 중</Title>;
   }
 
   if (quizzes.length === quizCount) {
-    return <QuizEnd />;
+    return <Exception title={'퀴즈 끝!'} path={'/quiz-result'} buttonText={'퀴즈 결과보기'} />;
   }
 
   const { category, difficulty, question, incorrect_answers, correct_answer, type } =
