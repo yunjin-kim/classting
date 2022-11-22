@@ -1,9 +1,12 @@
+import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 
 import router from 'routes';
 import styled, { css, ThemeProvider } from 'styled-components';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { store } from 'redux/store';
 
 import GlobalStyle from 'styles/GlobalStyle';
 import { theme } from 'styles/theme';
@@ -24,12 +27,14 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <S.Container>
-          <RouterProvider router={router} />
-        </S.Container>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <S.Container>
+            <RouterProvider router={router} />
+          </S.Container>
+        </ThemeProvider>
+      </Provider>
     </QueryClientProvider>
   );
 };
