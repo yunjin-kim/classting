@@ -6,6 +6,8 @@ import useQuiz from 'hooks/useQuiz';
 import Button from 'components/Button';
 import MarginBox from 'components/MarginBox';
 import ProgressBar from 'components/ProgressBar';
+import QuizEnd from 'components/QuizEnd';
+import Title from 'components/Title';
 
 const Quiz = () => {
   const { quizzes, quizCount, handleClickQuizAnswer } = useQuiz();
@@ -15,7 +17,7 @@ const Quiz = () => {
   }
 
   if (quizzes.length === quizCount) {
-    return <p>문제 끝</p>;
+    return <QuizEnd />;
   }
 
   const { category, difficulty, question, incorrect_answers, correct_answer, type } =
@@ -24,7 +26,7 @@ const Quiz = () => {
 
   return (
     <S.Container>
-      <S.Title>Quiz</S.Title>
+      <Title>Quiz</Title>
       <MarginBox bottom={1} />
       <ProgressBar current={quizCount} total={quizzes.length} />
       <MarginBox bottom={1} />
@@ -71,10 +73,6 @@ const S = {
   Container: styled.div`
     position: relative;
     width: 100%;
-  `,
-
-  Title: styled.h1`
-    text-align: center;
   `,
 
   QuestionBox: styled.div`
