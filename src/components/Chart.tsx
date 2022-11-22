@@ -24,7 +24,7 @@ const Chart = ({ labels, labelsValue }: Props) => {
         <S.ChartBarBox>
           {labelsPercent.map((labelPercent, index) => (
             <S.ChartBar key={index} height={labelPercent}>
-              <S.PercentText>{labelPercent}</S.PercentText>
+              <S.PercentText>{labelPercent}%</S.PercentText>
             </S.ChartBar>
           ))}
         </S.ChartBarBox>
@@ -91,6 +91,8 @@ const S = {
   `,
 
   ChartBar: styled.div`
+    display: flex;
+    justify-content: center;
     width: 1.25rem;
     border-radius: 0.375rem 0.375rem 0 0;
     animation: ${chartBar} 1.5s ease-in;
