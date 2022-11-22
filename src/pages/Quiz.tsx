@@ -7,10 +7,18 @@ import Button from 'components/Button';
 import Exception from 'components/Exception';
 import MarginBox from 'components/MarginBox';
 import ProgressBar from 'components/ProgressBar';
+import ResultModal from 'components/ResultModal';
 import Title from 'components/Title';
 
 const Quiz = () => {
-  const { quizzes, quizCount, handleClickQuizAnswer } = useQuiz();
+  const {
+    quizzes,
+    quizCount,
+    showResultModal,
+    isCorrectAnswer,
+    handleClickQuizAnswer,
+    handleClickNextQuiz,
+  } = useQuiz();
 
   if (!quizzes) {
     return <Title>문제 내는 중</Title>;
@@ -25,47 +33,52 @@ const Quiz = () => {
   const allAnswers = shuffle([correct_answer, ...incorrect_answers]);
 
   return (
-    <S.Container>
-      <Title>Quiz</Title>
-      <MarginBox bottom={1} />
-      <ProgressBar current={quizCount} total={quizzes.length} />
-      <MarginBox bottom={1} />
-      <S.Text>category : {category}</S.Text>
-      <MarginBox bottom={0.5} />
-      <S.Text>difficulty : {difficulty}</S.Text>
-      <MarginBox bottom={2} />
-      <S.QuestionBox>
-        <S.QuestionText>Question {quizCount + 1}</S.QuestionText>
+    <>
+      {showResultModal && (
+        <ResultModal isCorrectAnswer={isCorrectAnswer} handleClickNextQuiz={handleClickNextQuiz} />
+      )}
+      <S.Container>
+        <Title>Quiz</Title>
+        <MarginBox bottom={1} />
+        <ProgressBar current={quizCount} total={quizzes.length} />
+        <MarginBox bottom={1} />
+        <S.Text>category : {category}</S.Text>
         <MarginBox bottom={0.5} />
-        <S.QuestionText>{question}</S.QuestionText>
+        <S.Text>difficulty : {difficulty}</S.Text>
         <MarginBox bottom={2} />
-        <S.AnswerBox>
-          {type === 'multiple' && (
-            <>
-              {allAnswers.map((incorrectAnswer) => (
-                <Button
-                  key={incorrectAnswer}
-                  value={quizzes[quizCount]}
-                  onClick={handleClickQuizAnswer}
-                >
-                  {incorrectAnswer}
+        <S.QuestionBox>
+          <S.QuestionText>Question {quizCount + 1}</S.QuestionText>
+          <MarginBox bottom={0.5} />
+          <S.QuestionText>{question}</S.QuestionText>
+          <MarginBox bottom={2} />
+          <S.AnswerBox>
+            {type === 'multiple' && (
+              <>
+                {allAnswers.map((incorrectAnswer) => (
+                  <Button
+                    key={incorrectAnswer}
+                    value={quizzes[quizCount]}
+                    onClick={handleClickQuizAnswer}
+                  >
+                    {incorrectAnswer}
+                  </Button>
+                ))}
+              </>
+            )}
+            {type === 'boolean' && (
+              <>
+                <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
+                  {'True'}
                 </Button>
-              ))}
-            </>
-          )}
-          {type === 'boolean' && (
-            <>
-              <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
-                {'True'}
-              </Button>
-              <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
-                {'False'}
-              </Button>
-            </>
-          )}
-        </S.AnswerBox>
-      </S.QuestionBox>
-    </S.Container>
+                <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
+                  {'False'}
+                </Button>
+              </>
+            )}
+          </S.AnswerBox>
+        </S.QuestionBox>
+      </S.Container>
+    </>
   );
 };
 

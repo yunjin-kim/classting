@@ -9,7 +9,7 @@ interface Props {
   hoverBackColor?: Colors;
   fontColor?: Colors;
   value?: QuizType;
-  onClick?: (children: string, value: QuizType) => void;
+  onClick?: (children?: string, value?: QuizType) => void;
   children: string;
 }
 
@@ -33,6 +33,11 @@ const Button = ({
   const handleClick = () => {
     if (onClick && value) {
       onClick(children, value);
+      return;
+    }
+
+    if (onClick) {
+      onClick();
     }
   };
 

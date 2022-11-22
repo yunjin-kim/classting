@@ -8,6 +8,7 @@ export const COLOR_LIST = {
   GRAY: 'rgb(148, 153, 157)',
 
   BLACK: 'rgb(0, 0, 0)',
+  DIMMER_BLACK: 'rgba(0, 0, 0, 0.3)',
 } as const;
 
 export type ColorList = {
@@ -17,6 +18,14 @@ export type ColorList = {
   GRAY: string;
   LIGHT_GRAY: string;
   BLACK: string;
+  DIMMER_BLACK: string;
 };
 
-export type Colors = 'LIGHT_GREEN' | 'GREEN' | 'WHITE' | 'GRAY' | 'LIGHT_GRAY' | 'BLACK';
+export type Colors =
+  | 'LIGHT_GREEN'
+  | 'GREEN'
+  | 'WHITE'
+  | 'GRAY'
+  | 'LIGHT_GRAY'
+  | 'BLACK'
+  | 'DIMMER_BLACK';
