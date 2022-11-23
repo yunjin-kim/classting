@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import wrongAnswerNoteReducer from 'redux/quiz/wrongAnswerSlice';
+import quizSolveReducer from 'redux/quiz/quizSolve';
 
 export const store = configureStore({
   reducer: {
-    wrongAnswerNote: wrongAnswerNoteReducer,
+    quizSolve: quizSolveReducer,
   },
 });
 

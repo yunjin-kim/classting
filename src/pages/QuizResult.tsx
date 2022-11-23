@@ -10,7 +10,7 @@ import MarginBox from 'components/MarginBox';
 import Title from 'components/Title';
 
 const QuizResult = () => {
-  const { correct, wrong } = useSelector((state: RootState) => state.wrongAnswerNote);
+  const { correct, wrong } = useSelector((state: RootState) => state.quizSolve);
 
   if (correct.length === 0 && wrong.length === 0) {
     return (

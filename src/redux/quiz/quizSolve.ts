@@ -3,18 +3,20 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { QuizType } from 'types/quiz';
 
-export interface WrongAnswerNote {
+export interface QuizSolve {
   correct: QuizType[];
   wrong: QuizType[];
+  time: string;
 }
 
-const initialState: WrongAnswerNote = {
+const initialState: QuizSolve = {
   correct: [],
   wrong: [],
+  time: '',
 };
 
-export const wrongAnswerSlice = createSlice({
-  name: 'wrongAnswerNote',
+export const quizSolveSlice = createSlice({
+  name: 'quizSolve',
   initialState,
   reducers: {
     answer: (state, { payload }: PayloadAction<QuizType>) => {
@@ -26,6 +28,6 @@ export const wrongAnswerSlice = createSlice({
   },
 });
 
-export const { answer, wrong } = wrongAnswerSlice.actions;
+export const { answer, wrong } = quizSolveSlice.actions;
 
-export default wrongAnswerSlice.reducer;
+export default quizSolveSlice.reducer;
