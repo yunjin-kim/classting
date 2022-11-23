@@ -58,7 +58,7 @@ const Quiz = () => {
                   <Button
                     key={incorrectAnswer}
                     value={quizzes[quizCount]}
-                    onClick={handleClickQuizAnswer}
+                    onClick={handleClickQuizAnswer(incorrectAnswer, quizzes[quizCount])}
                   >
                     {incorrectAnswer}
                   </Button>
@@ -67,10 +67,16 @@ const Quiz = () => {
             )}
             {type === 'boolean' && (
               <>
-                <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
+                <Button
+                  value={quizzes[quizCount]}
+                  onClick={handleClickQuizAnswer('True', quizzes[quizCount])}
+                >
                   {'True'}
                 </Button>
-                <Button value={quizzes[quizCount]} onClick={handleClickQuizAnswer}>
+                <Button
+                  value={quizzes[quizCount]}
+                  onClick={handleClickQuizAnswer('False', quizzes[quizCount])}
+                >
                   {'False'}
                 </Button>
               </>
