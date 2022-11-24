@@ -10,13 +10,13 @@ import { ROUTER } from 'constants/index';
 
 const router = [
   {
-    path: '/',
+    path: ROUTER.HOME,
     element: <Home />,
   },
   {
     path: ROUTER.QUIZ,
     element: (
-      <Suspense fallback={<Title>문제 내는 중</Title>}>
+      <Suspense fallback={<Title>{'문제 내는 중'}</Title>}>
         <Quiz />
       </Suspense>
     ),
