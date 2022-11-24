@@ -453,6 +453,6 @@ Take a look at the reducer(s) handling this action type: `+z.type+`.
       monospace;
   }
 
-`,Dm={color:{LIGHT_GREEN:"rgb(98, 241, 189)",GREEN:"rgb(0, 200, 150)",WHITE:"rgb(255, 255, 255)",LIGHT_GRAY:"rgb(241, 241, 242)",GRAY:"rgb(148, 153, 157)",BLACK:"rgb(0, 0, 0)",DIMMER_BLACK:"rgba(0, 0, 0, 0.3)"}},Nm=new Gp({defaultOptions:{queries:{suspense:!0,useErrorBoundary:!0,refetchOnWindowFocus:!1,retry:0},mutations:{retry:0}}});(0,L.s)(document.getElementById("root")).render((0,O.jsx)(xc,{children:(0,O.jsxs)(Mc,{theme:Dm,children:[(0,O.jsx)(jm,{}),(0,O.jsx)(Tm,{children:(0,O.jsx)(Uc,{client:Nm,children:(0,O.jsx)(st,{store:Bh,children:(0,O.jsx)(kh,{loading:null,persistor:bm,children:(0,O.jsx)(Up,{})})})})})]})}))})()})();
+`,Dm={color:{LIGHT_GREEN:"rgb(98, 241, 189)",GREEN:"rgb(0, 200, 150)",WHITE:"rgb(255, 255, 255)",LIGHT_GRAY:"rgb(241, 241, 242)",GRAY:"rgb(148, 153, 157)",BLACK:"rgb(0, 0, 0)",DIMMER_BLACK:"rgba(0, 0, 0, 0.3)"}},Nm=new Gp({defaultOptions:{queries:{suspense:!0,useErrorBoundary:!0,refetchOnWindowFocus:!1,retry:0},mutations:{retry:0}}});(0,L.s)(document.getElementById("root")).render((0,O.jsx)(xc,{basename:process.env.PUBLIC_URL,children:(0,O.jsxs)(Mc,{theme:Dm,children:[(0,O.jsx)(jm,{}),(0,O.jsx)(Tm,{children:(0,O.jsx)(Uc,{client:Nm,children:(0,O.jsx)(st,{store:Bh,children:(0,O.jsx)(kh,{loading:null,persistor:bm,children:(0,O.jsx)(Up,{})})})})})]})}))})()})();
 
-//# sourceMappingURL=main.d0dbfa802e1310b2dacc.js.map
+//# sourceMappingURL=main.ce6b790f25e0cdb14d00.js.map
