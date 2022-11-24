@@ -6,28 +6,43 @@ import { QuizType } from 'types/quiz';
 export interface QuizSolve {
   correct: QuizType[];
   wrong: QuizType[];
-  time: string;
+  startTime: number;
+  endTime: number;
 }
 
 const initialState: QuizSolve = {
   correct: [],
   wrong: [],
-  time: '',
+  startTime: 0,
+  endTime: 0,
 };
 
 export const quizSolveSlice = createSlice({
   name: 'quizSolve',
   initialState,
   reducers: {
-    answer: (state, { payload }: PayloadAction<QuizType>) => {
+    getCorrect: (state, { payload }: PayloadAction<QuizType>) => {
       state.correct.push(payload);
     },
-    wrong: (state, { payload }: PayloadAction<QuizType>) => {
+    getWrong: (state, { payload }: PayloadAction<QuizType>) => {
       state.wrong.push(payload);
+    },
+    getStartTime: (state, { payload }: PayloadAction<any>) => {
+      state.startTime = payload;
+    },
+    getEndTime: (state, { payload }: PayloadAction<any>) => {
+      state.endTime = payload;
+    },
+    setNewQuiz: (state) => {
+      state.correct = initialState.correct;
+      state.wrong = initialState.wrong;
+      state.startTime = initialState.startTime;
+      state.endTime = initialState.endTime;
     },
   },
 });
 
-export const { answer, wrong } = quizSolveSlice.actions;
+export const { getCorrect, getWrong, getStartTime, getEndTime, setNewQuiz } =
+  quizSolveSlice.actions;
 
 export default quizSolveSlice.reducer;
