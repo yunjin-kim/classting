@@ -48,7 +48,8 @@ const S = {
     height: fit-content;
     border: none;
     border-radius: 0.875rem;
-    padding: 16px 14px;
+    padding: 1rem 0.875rem;
+    cursor: pointer;
     ${({ theme, backColor, hoverBackColor }: ButtonProps) => css`
       box-shadow: 0.0625rem 0.0625rem 0.3125rem ${theme.color.GRAY};
       background-color: ${theme.color[backColor]};
