@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { setCorrect, setWrong, setStartTime, setEndTime } from 'redux/quiz/quizSolve';
-import { setWrongAnswers } from 'redux/quiz/wrongAnswerNote';
+import { setCorrect, setWrong, setStartTime, setEndTime, setNewQuiz } from 'redux/quiz/quizSolve';
 
 import { requestQuiz } from 'apis/quiz';
 import { QuizType } from 'types/quiz';
@@ -23,9 +22,11 @@ const useQuiz = () => {
     },
     {
       onSuccess: () => {
+        quizSolveDispatch(setNewQuiz());
         const date = new Date().getTime();
         quizSolveDispatch(setStartTime(date));
       },
+      cacheTime: 0,
     },
   );
 
@@ -35,10 +36,9 @@ const useQuiz = () => {
       if (quizzes?.results[quizCount].correct_answer === children) {
         setIsCorrectAnswer(true);
         quizSolveDispatch(setCorrect(value));
-      } else {
+      } else if (quizzes?.results[quizCount].correct_answer !== children) {
         setIsCorrectAnswer(false);
         quizSolveDispatch(setWrong(value));
-        quizSolveDispatch(setWrongAnswers({ select_answer: children, ...value }));
       }
     },
     [],

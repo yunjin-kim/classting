@@ -1,10 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { convertTimeFormat } from 'utils';
 
-import { setNewQuiz } from 'redux/quiz/quizSolve';
 import { RootState } from 'redux/store';
 
 import Button from 'components/Button';
@@ -15,17 +14,12 @@ import Title from 'components/Title';
 
 const QuizResult = () => {
   const { correct, wrong, startTime, endTime } = useSelector((state: RootState) => state.quizSolve);
-  const quizSolveDispatch = useDispatch();
 
   if (correct.length === 0 && wrong.length === 0) {
     return (
       <Exception title={'아직 푼 문제가 없습니다.'} path={'/quiz'} buttonText={'퀴즈 풀어보기'} />
     );
   }
-
-  const handleClickStartNewQuiz = () => {
-    quizSolveDispatch(setNewQuiz());
-  };
 
   return (
     <S.Container>
@@ -50,16 +44,11 @@ const QuizResult = () => {
       <MarginBox bottom={1} />
       <S.ButtonBox>
         <Link to={'/quiz'}>
-          <Button
-            backColor={'GREEN'}
-            hoverBackColor={'LIGHT_GREEN'}
-            fontColor={'WHITE'}
-            onClick={handleClickStartNewQuiz}
-          >
+          <Button backColor={'GREEN'} hoverBackColor={'LIGHT_GREEN'} fontColor={'WHITE'}>
             새로운 문제풀기
           </Button>
         </Link>
-        <Link to={''}>
+        <Link to={'/wrong-answer-note'}>
           <Button backColor={'GREEN'} hoverBackColor={'LIGHT_GREEN'} fontColor={'WHITE'}>
             오답노트 가기
           </Button>
