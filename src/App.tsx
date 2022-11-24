@@ -6,7 +6,8 @@ import styled, { css, ThemeProvider } from 'styled-components';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { store } from 'redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from 'redux/store';
 
 import GlobalStyle from 'styles/GlobalStyle';
 import { theme } from 'styles/theme';
@@ -28,12 +29,14 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <S.Container>
-            <RouterProvider router={router} />
-          </S.Container>
-        </ThemeProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <S.Container>
+              <RouterProvider router={router} />
+            </S.Container>
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </QueryClientProvider>
   );

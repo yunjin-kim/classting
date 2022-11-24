@@ -1,11 +1,38 @@
-import { configureStore } from '@reduxjs/toolkit';
-import quizSolveReducer from 'redux/quiz/quizSolve';
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 
-export const store = configureStore({
-  reducer: {
-    quizSolve: quizSolveReducer,
-  },
-});
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import quizSolveReducer from 'redux/quiz/quizSolve';
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+const persistConfig = {
+  key: 'quiz',
+  storage,
+};
+
+const rootReducer = combineReducers({
+  quizSolve: persistReducer(persistConfig, quizSolveReducer),
+});
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+export const persistor = persistStore(store);
