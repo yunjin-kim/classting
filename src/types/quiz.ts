@@ -14,6 +14,7 @@ export interface QuizType {
 
 export interface SelectQuizType extends QuizType {
   select_answer: string;
+  key: number;
 }
 
 type DifficultyType = 'hard' | 'medium' | 'easy';

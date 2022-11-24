@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useQuery } from '@tanstack/react-query';
 
 import { setCorrect, setWrong, setStartTime, setEndTime, setNewQuiz } from 'redux/quiz/quizSolve';
+import { setWrongAnswers } from 'redux/quiz/wrongAnswerNote';
 
 import { requestQuiz } from 'apis/quiz';
 import { QuizType } from 'types/quiz';
@@ -37,8 +38,10 @@ const useQuiz = () => {
         setIsCorrectAnswer(true);
         quizSolveDispatch(setCorrect(value));
       } else if (quizzes?.results[quizCount].correct_answer !== children) {
+        const key = Math.random();
         setIsCorrectAnswer(false);
         quizSolveDispatch(setWrong(value));
+        quizSolveDispatch(setWrongAnswers({ key, select_answer: children, ...value }));
       }
     },
     [],
