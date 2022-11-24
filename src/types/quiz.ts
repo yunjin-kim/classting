@@ -12,14 +12,8 @@ export interface QuizType {
   type: QuizKind;
 }
 
-export interface SelectQuizType {
-  category: string;
-  correct_answer: string;
-  selectAnswer: string;
-  difficulty: DifficultyType;
-  incorrect_answers: string[];
-  question: string;
-  type: QuizKind;
+export interface SelectQuizType extends QuizType {
+  select_answer: string;
 }
 
 type DifficultyType = 'hard' | 'medium' | 'easy';
