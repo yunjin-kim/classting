@@ -15,12 +15,12 @@ export const wrongAnswersSlice = createSlice({
   name: 'wrongAnswers',
   initialState,
   reducers: {
-    getWrongAnswers: (state, { payload }: PayloadAction<SelectQuizType>) => {
+    setWrongAnswers: (state, { payload }: PayloadAction<SelectQuizType>) => {
       state.wrongAnswers.push(payload);
     },
   },
 });
 
-export const { getWrongAnswers } = wrongAnswersSlice.actions;
+export const { setWrongAnswers } = wrongAnswersSlice.actions;
 
 export default wrongAnswersSlice.reducer;

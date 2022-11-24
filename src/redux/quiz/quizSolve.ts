@@ -21,16 +21,16 @@ export const quizSolveSlice = createSlice({
   name: 'quizSolve',
   initialState,
   reducers: {
-    getCorrect: (state, { payload }: PayloadAction<QuizType>) => {
+    setCorrect: (state, { payload }: PayloadAction<QuizType>) => {
       state.correct.push(payload);
     },
-    getWrong: (state, { payload }: PayloadAction<QuizType>) => {
+    setWrong: (state, { payload }: PayloadAction<QuizType>) => {
       state.wrong.push(payload);
     },
-    getStartTime: (state, { payload }: PayloadAction<any>) => {
+    setStartTime: (state, { payload }: PayloadAction<any>) => {
       state.startTime = payload;
     },
-    getEndTime: (state, { payload }: PayloadAction<any>) => {
+    setEndTime: (state, { payload }: PayloadAction<any>) => {
       state.endTime = payload;
     },
     setNewQuiz: (state) => {
@@ -42,7 +42,7 @@ export const quizSolveSlice = createSlice({
   },
 });
 
-export const { getCorrect, getWrong, getStartTime, getEndTime, setNewQuiz } =
+export const { setCorrect, setWrong, setStartTime, setEndTime, setNewQuiz } =
   quizSolveSlice.actions;
 
 export default quizSolveSlice.reducer;
