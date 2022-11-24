@@ -27,10 +27,10 @@ export const quizSolveSlice = createSlice({
     setWrong: (state, { payload }: PayloadAction<QuizType>) => {
       state.wrong.push(payload);
     },
-    setStartTime: (state, { payload }: PayloadAction<any>) => {
+    setStartTime: (state, { payload }: PayloadAction<number>) => {
       state.startTime = payload;
     },
-    setEndTime: (state, { payload }: PayloadAction<any>) => {
+    setEndTime: (state, { payload }: PayloadAction<number>) => {
       state.endTime = payload;
     },
     setNewQuiz: (state) => {
