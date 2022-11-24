@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
 
 import Home from 'pages/Home';
 import Quiz from 'pages/Quiz';
@@ -8,7 +7,7 @@ import WrongAnswerNote from 'pages/WrongAnswerNote';
 
 import Title from 'components/Title';
 
-const router = createBrowserRouter([
+const router = [
   {
     path: '/',
     element: <Home />,
@@ -29,6 +28,6 @@ const router = createBrowserRouter([
     path: '/wrong-answer-note',
     element: <WrongAnswerNote />,
   },
-]);
+];
 
 export default router;
