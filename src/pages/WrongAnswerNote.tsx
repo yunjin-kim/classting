@@ -32,12 +32,12 @@ const WrongAnswerNote = () => {
 };
 
 const S = {
-  Container: styled.section`
+  Container: styled.main`
     display: flex;
     flex-direction: column;
   `,
 
-  WrongAnswersBox: styled.div`
+  WrongAnswersBox: styled.section`
     display: flex;
     flex-direction: column;
     gap: 1rem;

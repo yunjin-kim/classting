@@ -45,7 +45,7 @@ const chartBar = keyframes`
 `;
 
 const S = {
-  Container: styled.div`
+  Container: styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;

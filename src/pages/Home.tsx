@@ -20,7 +20,7 @@ const Home = () => {
 };
 
 const S = {
-  Container: styled.div`
+  Container: styled.main`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

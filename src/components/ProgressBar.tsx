@@ -22,7 +22,7 @@ const ProgressBar = ({ current, total }: Props) => {
 };
 
 const S = {
-  Container: styled.div`
+  Container: styled.section`
     position: relative;
     width: 100%;
     height: 1.5rem;

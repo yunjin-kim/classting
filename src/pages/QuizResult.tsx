@@ -25,29 +25,35 @@ const QuizResult = () => {
     <S.Container>
       <Title>퀴즈 결과</Title>
       <MarginBox bottom={2} />
+
       <S.ResultBox>
         <S.ResultContent>
           <h3>소요 시간</h3>
           <S.Text>{convertTimeFormat(startTime, endTime)}</S.Text>
         </S.ResultContent>
+
         <S.ResultContent>
           <h3>정답 개수</h3>
           <S.Text>{`${correct.length} 개`} </S.Text>
         </S.ResultContent>
+
         <S.ResultContent>
           <h3>오답 개수</h3>
           <S.Text>{`${wrong.length} 개`}</S.Text>
         </S.ResultContent>
       </S.ResultBox>
       <MarginBox bottom={2} />
+
       <Chart labels={['정답', '오답']} labelsValue={[correct.length, wrong.length]} />
       <MarginBox bottom={1} />
+
       <S.ButtonBox>
         <Link to={'/quiz'}>
           <Button backColor={'GREEN'} hoverBackColor={'LIGHT_GREEN'} fontColor={'WHITE'}>
             새로운 문제풀기
           </Button>
         </Link>
+
         <Link to={'/wrong-answer-note'}>
           <Button backColor={'GREEN'} hoverBackColor={'LIGHT_GREEN'} fontColor={'WHITE'}>
             오답노트 가기
@@ -59,17 +65,17 @@ const QuizResult = () => {
 };
 
 const S = {
-  Container: styled.div`
+  Container: styled.main`
     width: 100%;
   `,
 
-  ResultBox: styled.div`
+  ResultBox: styled.section`
     display: flex;
     justify-content: center;
     gap: 1rem;
   `,
 
-  ResultContent: styled.div`
+  ResultContent: styled.article`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,7 +86,7 @@ const S = {
     font-size: 1.25rem;
   `,
 
-  ButtonBox: styled.div`
+  ButtonBox: styled.section`
     display: flex;
     flex-direction: row;
     justify-content: center;

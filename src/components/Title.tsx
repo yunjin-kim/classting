@@ -5,11 +5,15 @@ interface Props {
 }
 
 const Title = ({ children }: Props) => {
-  return <S.Container>{children}</S.Container>;
+  return (
+    <header>
+      <S.Text>{children}</S.Text>
+    </header>
+  );
 };
 
 const S = {
-  Container: styled.h1`
+  Text: styled.h1`
     text-align: center;
   `,
 };
