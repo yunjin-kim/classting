@@ -44,6 +44,7 @@ const App = () => {
 
 const S = {
   Container: styled.div`
+    overflow: scroll;
     display: flex;
     justify-content: center;
     width: 26.25rem;
