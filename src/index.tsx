@@ -28,6 +28,16 @@ const queryClient = new QueryClient({
   },
 });
 
+if (location.href.includes('http://localhost')) {
+  const { worker } = require('./mocks/browser');
+
+  worker.start({
+    serviceWorker: {
+      url: '/public/mockServiceWorker.js',
+    },
+  });
+}
+
 createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
