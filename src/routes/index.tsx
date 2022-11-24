@@ -6,6 +6,7 @@ import QuizResult from 'pages/QuizResult';
 import WrongAnswerNote from 'pages/WrongAnswerNote';
 
 import Title from 'components/Title';
+import { ROUTER } from 'constants/index';
 
 const router = [
   {
@@ -13,7 +14,7 @@ const router = [
     element: <Home />,
   },
   {
-    path: '/quiz',
+    path: ROUTER.QUIZ,
     element: (
       <Suspense fallback={<Title>문제 내는 중</Title>}>
         <Quiz />
@@ -21,11 +22,11 @@ const router = [
     ),
   },
   {
-    path: '/quiz-result',
+    path: ROUTER.QUIZ_RESULT,
     element: <QuizResult />,
   },
   {
-    path: '/wrong-answer-note',
+    path: ROUTER.WRONG_ANSWER_NOTE,
     element: <WrongAnswerNote />,
   },
 ];

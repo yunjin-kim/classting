@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { API_URL } from 'constants/index';
+
 export const fetcher = axios.create({
-  baseURL: 'https://opentdb.com/api.php',
+  baseURL: API_URL,
 });

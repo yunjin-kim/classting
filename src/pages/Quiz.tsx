@@ -9,6 +9,7 @@ import MarginBox from 'components/MarginBox';
 import ProgressBar from 'components/ProgressBar';
 import ResultModal from 'components/ResultModal';
 import Title from 'components/Title';
+import { ROUTER } from 'constants/index';
 
 const Quiz = () => {
   const {
@@ -25,7 +26,7 @@ const Quiz = () => {
   }
 
   if (quizzes.length === quizCount) {
-    return <Exception title={'퀴즈 끝!'} path={'/quiz-result'} buttonText={'퀴즈 결과보기'} />;
+    return <Exception title={'퀴즈 끝!'} path={ROUTER.QUIZ_RESULT} buttonText={'퀴즈 결과보기'} />;
   }
 
   const { category, difficulty, question, incorrect_answers, correct_answer, type } =
