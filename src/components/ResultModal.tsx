@@ -19,12 +19,14 @@ const ResultModal = ({ isCorrectAnswer, handleClickNextQuiz }: Props) => {
             <S.InnerCircle />
           </S.Correct>
         )}
+
         {!isCorrectAnswer && (
           <S.Wrong>
             <S.WrongStickRight />
             <S.WrongStickLeft />
           </S.Wrong>
         )}
+
         <Button onClick={handleClickNextQuiz}>{'다음 퀴즈'}</Button>
         <MarginBox bottom={-14} />
       </S.Container>
@@ -45,7 +47,7 @@ const S = {
     `}
   `,
 
-  Container: styled.div`
+  Container: styled.section`
     position: fixed;
     top: 30%;
     left: 50%;

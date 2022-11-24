@@ -1,7 +1,6 @@
 import { persistReducer, persistStore } from 'redux-persist';
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import sessionStorage from 'redux-persist/es/storage/session';
 import storage from 'redux-persist/lib/storage';
 import quizSolveReducer from 'redux/quiz/quizSolve';
 import wrongAnswersReducer from 'redux/quiz/wrongAnswerNote';
@@ -11,7 +10,7 @@ export type AppDispatch = typeof store.dispatch;
 
 const quizConfig = {
   key: 'quiz',
-  storage: sessionStorage,
+  storage,
 };
 
 const wrongAnswerConfig = {

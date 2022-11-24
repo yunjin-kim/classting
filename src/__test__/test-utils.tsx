@@ -1,8 +1,7 @@
-import { createRoot } from 'react-dom/client';
+import React, { FC, ReactElement } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import App from 'App';
 import { ThemeProvider } from 'styled-components';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -10,14 +9,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from 'redux/store';
 
-import ErrorBoundary from 'components/Errorboundary';
-import GlobalStyle from 'styles/GlobalStyle';
+import { render, RenderOptions } from '@testing-library/react';
 import { theme } from 'styles/theme';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      suspense: true,
+      suspense: false,
       useErrorBoundary: true,
       refetchOnWindowFocus: false,
       retry: 0,
@@ -28,29 +26,21 @@ const queryClient = new QueryClient({
   },
 });
 
-if (location.href.includes('http://localhost')) {
-  const { worker } = require('./mocks/browser');
-
-  worker.start({
-    serviceWorker: {
-      url: '/public/mockServiceWorker.js',
-    },
-  });
-}
-
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <ErrorBoundary>
+const AllTheProviders: FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-              <App />
+              {children}
             </PersistGate>
           </Provider>
         </QueryClientProvider>
-      </ErrorBoundary>
-    </ThemeProvider>
-  </BrowserRouter>,
-);
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+};
+
+export const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
+  render(ui, { wrapper: AllTheProviders, ...options });

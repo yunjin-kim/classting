@@ -9,6 +9,7 @@ import MarginBox from 'components/MarginBox';
 import ProgressBar from 'components/ProgressBar';
 import ResultModal from 'components/ResultModal';
 import Title from 'components/Title';
+import { ROUTER } from 'constants/index';
 
 const Quiz = () => {
   const {
@@ -21,11 +22,11 @@ const Quiz = () => {
   } = useQuiz();
 
   if (!quizzes) {
-    return <Title>문제 내는 중</Title>;
+    return <Title>{'문제 내는 중'}</Title>;
   }
 
   if (quizzes.length === quizCount) {
-    return <Exception title={'퀴즈 끝!'} path={'/quiz-result'} buttonText={'퀴즈 결과보기'} />;
+    return <Exception title={'퀴즈 끝!'} path={ROUTER.QUIZ_RESULT} buttonText={'퀴즈 결과보기'} />;
   }
 
   const { category, difficulty, question, incorrect_answers, correct_answer, type } =
@@ -38,19 +39,25 @@ const Quiz = () => {
         <ResultModal isCorrectAnswer={isCorrectAnswer} handleClickNextQuiz={handleClickNextQuiz} />
       )}
       <S.Container>
-        <Title>Quiz</Title>
+        <Title>{'Quiz'}</Title>
         <MarginBox bottom={1} />
+
         <ProgressBar current={quizCount} total={quizzes.length} />
         <MarginBox bottom={1} />
-        <S.Text>category : {category}</S.Text>
+
+        <S.Text>{`category : ${category}`}</S.Text>
         <MarginBox bottom={0.5} />
-        <S.Text>difficulty : {difficulty}</S.Text>
+
+        <S.Text>{`difficulty : ${difficulty}`}</S.Text>
         <MarginBox bottom={2} />
+
         <S.QuestionBox>
-          <S.QuestionText>Question {quizCount + 1}</S.QuestionText>
+          <S.QuestionText>{`Question ${quizCount + 1}`}</S.QuestionText>
           <MarginBox bottom={0.5} />
+
           <S.QuestionText>{question}</S.QuestionText>
           <MarginBox bottom={2} />
+
           <S.AnswerBox>
             {type === 'multiple' && (
               <>
@@ -65,6 +72,7 @@ const Quiz = () => {
                 ))}
               </>
             )}
+
             {type === 'boolean' && (
               <>
                 <Button
@@ -89,12 +97,12 @@ const Quiz = () => {
 };
 
 const S = {
-  Container: styled.div`
+  Container: styled.main`
     position: relative;
     width: 100%;
   `,
 
-  QuestionBox: styled.div`
+  QuestionBox: styled.section`
     position: absolute;
     top: 50%;
     left: 50%;
@@ -111,7 +119,7 @@ const S = {
     font-size: 1rem;
   `,
 
-  AnswerBox: styled.div`
+  AnswerBox: styled.section`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

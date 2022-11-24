@@ -25,7 +25,7 @@ const Exception = ({ title, path, buttonText }: Props) => {
 };
 
 const S = {
-  Container: styled.div`
+  Container: styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
