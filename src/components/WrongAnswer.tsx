@@ -18,15 +18,18 @@ const WrongAnswer = ({ wrongAnswer }: Props) => {
 
   return (
     <S.Container>
-      <S.SubTitle>Quiz</S.SubTitle>
+      <h3>Quiz</h3>
       <MarginBox bottom={1} />
       <p>{question}</p>
+      <MarginBox bottom={1} />
+
+      <h4>Answer</h4>
       <MarginBox bottom={0.5} />
-      <p>answer : {correct_answer}</p>
+      <p>{correct_answer}</p>
+      <MarginBox bottom={1.5} />
+
+      <h4>Choice</h4>
       <MarginBox bottom={0.5} />
-      <p>difficulty : {difficulty}</p>
-      <p>category : {category}</p>
-      <p>선택한 답</p>
       {type === 'multiple' && (
         <>
           {incorrect_answers.map((incorrectAnswer, index) => (
@@ -42,6 +45,10 @@ const WrongAnswer = ({ wrongAnswer }: Props) => {
           <S.AnswerText select={'False' === select_answer}>{'False'}</S.AnswerText>
         </>
       )}
+      <MarginBox bottom={2} />
+
+      <p>category : {category}</p>
+      <p>difficulty : {difficulty}</p>
     </S.Container>
   );
 };
@@ -49,7 +56,7 @@ const WrongAnswer = ({ wrongAnswer }: Props) => {
 const S = {
   Container: styled.article`
     width: 300px;
-    height: 300px;
+    height: fit-content;
     padding: 1.25rem 0.625rem;
     border-radius: 1rem;
     ${({ theme }) => css`
@@ -62,10 +69,6 @@ const S = {
     ${({ theme, select }: AnswerTextProps) => css`
       color: ${select ? theme.color.GREEN : theme.color.BLACK};
     `};
-  `,
-
-  SubTitle: styled.h3`
-    font-size: 1.25rem;
   `,
 };
 

@@ -41,6 +41,7 @@ const S = {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding-bottom: 1.25rem;
   `,
 };
 
