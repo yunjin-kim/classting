@@ -1,8 +1,5 @@
-import { Link } from 'react-router-dom';
-
 import styled, { css, keyframes } from 'styled-components';
 
-import Button from './Button';
 import { StyledDefaultProps } from 'types/utils';
 
 interface ChartWithProps extends StyledDefaultProps {
@@ -34,18 +31,6 @@ const Chart = ({ labels, labelsValue }: Props) => {
           ))}
         </S.LabelBox>
       </S.ChartBox>
-      <S.ButtonBox>
-        <Link to={'/quiz'}>
-          <Button backColor={'GREEN'} hoverBackColor={'LIGHT_GREEN'} fontColor={'WHITE'}>
-            새로운 문제풀기
-          </Button>
-        </Link>
-        <Link to={''}>
-          <Button backColor={'GREEN'} hoverBackColor={'LIGHT_GREEN'} fontColor={'WHITE'}>
-            오답노트 가기
-          </Button>
-        </Link>
-      </S.ButtonBox>
     </S.Container>
   );
 };
@@ -117,11 +102,6 @@ const S = {
     ${({ theme }) => css`
       border-top: 1px solid ${theme.color.BLACK};
     `};
-  `,
-
-  ButtonBox: styled.div`
-    display: flex;
-    gap: 1rem;
   `,
 };
 
